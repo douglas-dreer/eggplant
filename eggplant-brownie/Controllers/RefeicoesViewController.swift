@@ -9,11 +9,10 @@
 import UIKit
 
 class RefeicoesViewController: UITableViewController {
+    var SEM_REGISTRO: String = "Sem itens cadastrados"
+    let ADICIONAR_SEGUE: String = "adicionarSegue"
     var refeicaoList = [
-        Refeicao(nome: "Feijão", felicidade: 3),
-        Refeicao(nome: "Pizza", felicidade: 5),
-        Refeicao(nome: "Ovo", felicidade: 2),
-       
+        Refeicao(nome: "Sem itens cadastrados", felicidade: 0)
     ]
     
     override func viewDidLoad() {
@@ -33,12 +32,19 @@ class RefeicoesViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? ViewController {
-            viewController.tableViewController = self
+        if segue.identifier == ADICIONAR_SEGUE {
+            if let viewController = segue.destination as? ViewController {
+                viewController.tableViewController = self
+            }
         }
+        
     }
     
     func adicionarItem(_ refeicao: Refeicao) {
+        if refeicaoList.contains(where: { $0.nome == SEM_REGISTRO }) {
+            refeicaoList.remove(at: 0)
+        }
+        
         refeicaoList.append(refeicao)
         tableView.reloadData()
     }

@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" id="KX2-m0-ztM">
                         <barButtonItem key="rightBarButtonItem" title="Adicionar" id="afV-0s-46g">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="Big-vo-VPt"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="adicionarSegue" id="Big-vo-VPt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
